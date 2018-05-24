@@ -1,4 +1,7 @@
-# [Deep Learning for Epidemiological Predictions](https://raw.githubusercontent.com/CrickWu/crickwu.github.io/master/papers/sigir2018.pdf)
+# Deep Learning for Epidemiological Predictions
+
+## Paper
+[Deep Learning for Epidemiological Predictions](https://raw.githubusercontent.com/CrickWu/crickwu.github.io/master/papers/sigir2018.pdf) - Yuexin Wu et. al.
 
 ## Dependencies
 python-2.7, pytorch-0.2.0, numpy
