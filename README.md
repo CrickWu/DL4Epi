@@ -1,4 +1,4 @@
-# Deep Learning for Epidemiology Prediction
+# [Deep Learning for Epidemiological Predictions](https://raw.githubusercontent.com/CrickWu/crickwu.github.io/master/papers/sigir2018.pdf)
 
 ## Dependencies
 python-2.7, pytorch-0.2.0, numpy
