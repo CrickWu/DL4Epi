@@ -4,7 +4,7 @@
 [Deep Learning for Epidemiological Predictions](https://raw.githubusercontent.com/CrickWu/crickwu.github.io/master/papers/sigir2018.pdf) - Yuexin Wu et. al. SIGIR 2018
 
 ## Dependencies
-python-2.7, pytorch-0.2.0, numpy
+```Python == 2.7, Pytorch == 0.2.0, numpy```
 ## How to Run
 Preprocessing: run `bash ./sh/mklog.sh` to create empty `log` `save` folders.
 ### Simple Example
@@ -60,3 +60,15 @@ correlation: Pearson correlation score
 
 ## Notice
 The results in the paper are produced by pytorch-0.2.0, which seems to have some unstable numerical issues and is likely to produce NaN in some cases. If that happens, you may try rerun the code or switch to a more stable pytorch version (e.g. 0.4.0) for more robust prediction.
+
+## Citation
+```
+@inproceedings{wu2018deep,
+  title={Deep Learning for Epidemiological Predictions},
+  author={Wu, Yuexin and Yang, Yiming and Nishiura, Hiroshi and Saitoh, Masaya},
+  booktitle={The 41st International ACM SIGIR Conference on Research \& Development in Information Retrieval},
+  pages={1085--1088},
+  year={2018},
+  organization={ACM}
+}
+```
