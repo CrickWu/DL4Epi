@@ -3,6 +3,11 @@
 ## Paper
 [Deep Learning for Epidemiological Predictions](https://raw.githubusercontent.com/CrickWu/crickwu.github.io/master/papers/sigir2018.pdf) - Yuexin Wu et. al. SIGIR 2018
 
+The overall structure is composed of 3 parts: a CNN for capturing correlation between signals, a RNN for linking up the dependencies in the temporal dimension and the residual links for fast training and overfitting prevention. We carefully restrain the parameter space, making the total model have a similar size as autogression models.
+
+<p style="text-align:center;"><img src="https://github.com/CrickWu/DL4Epi/blob/master/figs/framework.png" alt="framework" style="max-width:80%;"></p>
+
+
 ## Dependencies
 ```Python == 2.7, Pytorch == 0.2.0, numpy```
 ## How to Run
