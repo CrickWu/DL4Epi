@@ -8,7 +8,7 @@ import time
 
 import torch
 import torch.nn as nn
-from models import AR, VAR, GAR, RNN
+from models import AR, VAR, GAR, RNN, VAR_mask
 from models import CNNRNN, CNNRNN_Res
 import numpy as np
 import sys
@@ -37,8 +37,12 @@ def evaluate(loader, data, model, evaluateL2, evaluateL1, batch_size):
             test = torch.cat((test, Y.cpu()));
 
         scale = loader.scale.expand(output.size(0), loader.m)
-        total_loss += evaluateL2(output * scale , Y * scale ).data[0]
-        total_loss_l1 += evaluateL1(output * scale , Y * scale ).data[0]
+        if torch.__version__ < '0.4.0':
+            total_loss += evaluateL2(output * scale , Y * scale ).data[0]
+            total_loss_l1 += evaluateL1(output * scale , Y * scale ).data[0]
+        else:
+            total_loss += evaluateL2(output * scale , Y * scale ).item()
+            total_loss_l1 += evaluateL1(output * scale , Y * scale ).item()
         n_samples += (output.size(0) * loader.m);
 
     rse = math.sqrt(total_loss / n_samples)/loader.rse
@@ -73,7 +77,10 @@ def train(loader, data, model, criterion, optim, batch_size):
         loss = criterion(output * scale, Y * scale);
         loss.backward();
         optim.step();
-        total_loss += loss.data[0];
+        if torch.__version__ < '0.4.0':
+            total_loss += loss.data[0]
+        else:
+            total_loss += loss.item()
         n_samples += (output.size(0) * loader.m);
     return total_loss / n_samples
 
@@ -115,8 +122,8 @@ args = parser.parse_args()
 print(args);
 if not os.path.exists(args.save_dir):
     os.makedirs(args.save_dir)
-if args.model in ['CNNRNN', 'CNN'] and args.sim_mat is None:
-    print('CNNRNN/CNN requires "sim_mat" option')
+if args.model in ['CNNRNN', 'CNN', 'VAR_mask'] and args.sim_mat is None:
+    print('CNNRNN/CNN/VAR_mask requires "sim_mat" option')
     sys.exit(0)
 
 args.cuda = args.gpu is not None

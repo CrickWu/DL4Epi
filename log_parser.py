@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
+from __future__ import print_function
 import glob
 import numpy as np
 
@@ -31,27 +32,30 @@ def format_logs(raw_expression):
             continue
         rse_list, cor_list = zip(*tuple_list)
         index = np.argmin(rse_list)
-        print 'horizon:{:2d}'.format(num), 'rmse: {:.4f}'.format(rse_list[index]), 'corr: {:.4f}'.format(cor_list[index]), 'best_model:', filenames[index]
+        print('horizon:{:2d}'.format(num), 'rmse: {:.4f}'.format(rse_list[index]), 'corr: {:.4f}'.format(cor_list[index]), 'best_model:', filenames[index])
 
 if __name__ == '__main__':
-    for data in ['hhs', 'regsions']:
-        print 'Dataset:', data
+    for data in ['hhs', 'regions']:
+        print('Dataset:', data)
         # cnnrnn_res
-        print '*' * 40
+        print('*' * 40)
         format_logs('./log/cnnrnn_res/cnnrnn_res.%s.hid-*.drop-*.w-*.h-{}.ratio-*.res-*.out' % (data))
-        print '*' * 40
+        print('*' * 40)
         # cnnrnn
         format_logs('./log/cnnrnn/cnnrnn.%s.hid-*.drop-*.w-*.h-{}.out' %(data))
-        print '*' * 40
+        print('*' * 40)
         # rnn
         format_logs('./log/rnn/rnn.%s.hid-*.drop-*.w-*.h-{}.out' %(data))
-        print '*' * 40
+        print('*' * 40)
         # gar
         format_logs('./log/gar/gar.%s.d-*.w-*.h-{}.out' %(data))
-        print '*' * 40
+        print('*' * 40)
         # ar
         format_logs('./log/ar/ar.%s.d-*.w-*.h-{}.out' %(data))
-        print '*' * 40
+        print('*' * 40)
         # var
         format_logs('./log/var/var.%s.d-*.w-*.h-{}.out' %(data))
-        print '*' * 40
+        print('*' * 40)
+        # var_mask
+        format_logs('./log/var_mask/var_mask.%s.d-*.w-*.h-{}.out' %(data))
+        print('*' * 40)

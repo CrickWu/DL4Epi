@@ -10,6 +10,7 @@ The overall structure is composed of 3 parts: a CNN for capturing correlation be
 
 ## Dependencies
 ```Python == 2.7, Pytorch == 0.2.0, numpy```
+### Update: the current code can be executed with Python >= 3 and Pytorch >= 0.4.0
 ## How to Run
 Preprocessing: run `bash ./sh/mklog.sh` to create empty `log` `save` folders.
 ### Simple Example
@@ -19,7 +20,8 @@ python main.py --normalize 1 --epochs 2000 --data ./data/us_hhs/data.txt --sim_m
 --horizon 1 --window 16 --gpu 0 --metric 0
 ```
 ### Experiment for a Single Dataset/Method
-For CNNRNN_Res, CNNRNN:
+For CNNRNN_Res, CNNRNN, VAR_mask:
+### Update: new method `VAR_mask` is added. This baseline is the same with `VAR` except that the correlation is only considered when two signals are adjacent (designed by `ind.txt`),
 ```
 bash ./sh/grid_<model>.sh <data_path> <adj_mat_path> <log_info> <gpu_number> <normalization>
 ```
